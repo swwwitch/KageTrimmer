@@ -1,0 +1,74 @@
+Makes the shadows on screenshots and other images more compact, or adds a shadow to images without one, and saves the result as PNG.
+
+## How to Use
+1. Choose a **Shadow size** (No shadow, XS, S, or L) and whether to **Add a thin border**.
+2. Drop images onto the main window or choose them with **File > Choose Images…** (⌘O). You can also use Open With in Finder or drop images onto the app icon in the Dock. Multiple images are processed in one go.
+
+- For images that already have a shadow, the existing shadow is removed and replaced with one of the selected size.
+- Images without a shadow get a new shadow.
+- **Add a thin border** applies only when a shadow is added to an image that had none.
+
+## Where Files Are Saved
+The original image is never changed. The processed PNG is saved in the same folder as the original, named “original name + suffix.png”. The suffix depends on the shadow size:
+
+- **No shadow**: -no-shadow
+- **XS**: -xs
+- **S**: -s
+- **L**: -l
+
+If a file with the same name already exists, it is not replaced; a number is added instead, such as “name-s 2.png” and “name-s 3.png”. You can change the suffixes in the Output tab of Settings.
+
+## No Shadow
+No shadow removes existing shadows. Images without a shadow are skipped rather than given a shadow.
+
+## Settings
+Open **Settings…** from the app menu (⌘,). The Startup & Background tab contains:
+
+- **Open at login**
+- **Hide main window at startup**
+- **Hide from Dock and App Switcher**: keeps the app out of the Dock and the ⌘Tab switcher even while the window is open. Show it from the menu bar icon, the show app shortcut, or by opening the app again in Finder.
+- **Show in menu bar**
+- **Show app shortcut**: when images are selected in Finder or Path Finder, they are processed right away (not in the App Store version). Otherwise it shows the KageTrimmer window. The default is ⌃⌥⌘U and it is enabled. To change it, click **Change…** and press the keys to assign (include ⌘ or ⌃; press Esc to cancel). **Reset to Default** goes back to ⌃⌥⌘U. Turn off **Enable hotkey** if you do not use it.
+
+In the Output tab you can choose the shadow size the main window starts with (S by default) and the file name suffix for each shadow size. A size chosen in the main window is used until you quit. Leave a suffix field empty to use the default suffix.
+
+Under “When processing succeeds” you can choose to play a sound, select the saved images in Finder, and move the original images to the Trash (all off by default). The sound plays when every image was processed. Only the originals of images that were saved are moved to the Trash, and you can put them back from there.
+
+Turn on **Watch a folder and process automatically** in the Folder Watch tab to process window screenshots added to the folder automatically, with the shadow size selected in the main window (off by default). The folder starts as the macOS screenshot location. macOS screenshots are identified by how they were taken; CleanShot X and similar tools by their “Screenshot” information and shadow. Screenshots of a selected area or the whole screen are not processed.
+
+To process windows captured with CleanShot X, set the window background to Transparent and the save location to the watched folder in CleanShot X settings (windows captured with a background can’t be recognized).
+
+In the Sharing tab you can share the shadow size, border, file name suffixes and what happens after success. **Export…** saves KageTrimmer-Settings.plist, and **Import…** loads it on another Mac (after you confirm the replacement). Under Settings Sync, choose a folder in iCloud Drive, Dropbox or elsewhere, and Macs that use the same folder keep these settings in step automatically. Login launch, the menu bar, the hotkey and folder watching are set on each Mac.
+
+## Keyboard Shortcuts
+- **⌘0**: Open Main Window
+- **⌘O**: Choose Images
+- **⌘,**: Settings
+- **⌘?**: Help
+- **⌘W**: Close Window
+- **⌘Z / ⇧⌘Z**: Undo / Redo (when editing text fields)
+- **⌘Q**: Quit KageTrimmer
+- **⌃⌥⌘U** (default): Process the images selected in Finder or Path Finder, or show the KageTrimmer window if nothing is selected (works while you are using other apps)
+
+## Permissions
+The first time the shortcut processes selected images, macOS asks whether KageTrimmer may control Finder (or Path Finder). Click **Allow**. To change this later, use System Settings > Privacy & Security > Automation. If any image could not be processed (for example, it had no shadow), the window shows the results.
+
+KageTrimmer does not need Accessibility permission. If it cannot write to the original image’s folder, it asks for access to that folder. Choose the folder that contains the original image and click **Allow Access**.
+
+## Opening and Quitting
+- Closing the window does not quit the app. To show the window again, click the app icon in the Dock, choose **Open Main Window** from the menu bar icon (when **Show in menu bar** is on), or press the show app shortcut.
+- When opened at login, or when **Hide main window at startup** is on, the app starts without showing the main window.
+- If the app is opened with files, it shows the window, processes the files, and then quits. If you hand files to the app while it is already running, it keeps running after processing.
+- To quit, choose **Quit KageTrimmer** from the app menu (⌘Q) or **Quit KageTrimmer** from the menu bar icon. You can’t quit while images are being processed; quit again after processing has finished.
+
+## Troubleshooting
+- Results appear below the drop area. Images shown as “Skipped (no shadow)” are not processed in No shadow mode.
+- If an image can’t be read or saved, check the image format and the access permissions of the original image’s folder.
+- If the shortcut can’t be registered, the combination may already be used by another app. Choose a different combination in Settings.
+- If the app doesn’t open at login, put it in the Applications folder and make sure it is allowed in Login Items in System Settings.
+- Choose **Open the note Article** from the Help menu to open the guide article on note in your browser.
+
+## Removing the App
+1. Turn off **Open at login**.
+2. Quit the app.
+3. Move KageTrimmer to the Trash.
